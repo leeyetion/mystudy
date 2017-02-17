@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="已选中0项" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+         android:layout_height="0dp"
+        android:layout_weight="1" >
+    </ListView>
+	<!-- RadioGroup:才能被单选 -->
+    <RadioGroup
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+      >
+        <!-- 因为同一时间是能有一个按钮被选中,因此建议使用Radio -->
+        <RadioButton
+           style="@style/btnStyle"
+            android:drawableTop="@drawable/selector_good"
+            android:text="全选" />
+        
+         <RadioButton
+             style="@style/btnStyle"
+             android:drawableTop="@drawable/selector_error"
+             android:text="反选" />
+         
+          <RadioButton
+           style="@style/btnStyle"
+            android:drawableTop="@drawable/selector_bad"
+            android:text="取消" />
+          
+            <RadioButton
+                style="@style/btnStyle"
+                android:drawableTop="@drawable/map"
+                android:text="测试" />
+    </RadioGroup>
+
+</LinearLayout>
