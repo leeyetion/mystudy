@@ -13,8 +13,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import com.crcement.com.mystudydemo.R;
+
 
 import com.crc.demo.model.Person;
 
@@ -22,7 +24,10 @@ import com.crc.demo.model.Person;
 public class ChecBoxtActivity extends Activity {
 
 	private List<Person> pList = new ArrayList<Person>();
-	
+	private TextView txt_count = null;
+	private int count = 0;
+
+    RadioButton rb_all=null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,6 +38,7 @@ public class ChecBoxtActivity extends Activity {
 		}
 		// 2:通过适配器进行数据适配
 		ListView lv = (ListView) findViewById(R.id.lv);
+		txt_count= (TextView) findViewById(R.id.txt_count);
 		// 继承AdapterView的控件都必须使用适配器模式(提升性能)
 		// lv.addView(child);
 		lv.setAdapter(new MyBaseAdapter());
@@ -74,15 +80,25 @@ public class ChecBoxtActivity extends Activity {
 				}
 				TextView txt_name = (TextView) item.findViewById(R.id.txt_name);
 				CheckBox chk_box = (CheckBox)item.findViewById(R.id.chk_box);
-				// 单击复选框的时候,要同步当前person的boolean值
-				chk_box.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				 //单击复选框的时候,要同步当前person的boolean值
+				/*chk_box.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 						Log.i("jxy","buttonView:" + buttonView + ",isChecked:" + isChecked);
-//						person.setCheck(isChecked);
+						person.setCheck(isChecked);
+					}
+				});*/
+				chk_box.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						CheckBox chk_box = (CheckBox) view;
+						person.setCheck(chk_box.isChecked());
+						count = chk_box.isChecked() ? count+1 : count-1;
+						txt_count.setText(String.format("已选中%d项",count));
+						notifyDataSetChanged();
 					}
 				});
-				// person的值交给item(回显)
+				 //person的值交给item(回显)
 				txt_name.setText(person.getName());
 				chk_box.setChecked(person.isCheck());
 				return item;

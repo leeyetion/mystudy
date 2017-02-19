@@ -25,20 +25,23 @@
       >
         <!-- 因为同一时间是能有一个按钮被选中,因此建议使用Radio -->
         <RadioButton
-           style="@style/btnStyle"
+
+            style="@style/btnStyle"
+            android:id="@+id/rb_all"
             android:drawableTop="@drawable/selector_good"
             android:text="全选" />
-        
+
          <RadioButton
              style="@style/btnStyle"
+
              android:drawableTop="@drawable/selector_error"
              android:text="反选" />
-         
+
           <RadioButton
            style="@style/btnStyle"
             android:drawableTop="@drawable/selector_bad"
             android:text="取消" />
-          
+
             <RadioButton
                 style="@style/btnStyle"
                 android:drawableTop="@drawable/map"

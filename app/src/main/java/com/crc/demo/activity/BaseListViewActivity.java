@@ -71,6 +71,4 @@ public class BaseListViewActivity extends AppCompatActivity {
             p_list.add(new Person("admin"+i,"12345678901","中国广东深圳"));
         }
     }
-
-
 }
