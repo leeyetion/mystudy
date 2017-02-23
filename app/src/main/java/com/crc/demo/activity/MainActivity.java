@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    public void  displayImage(View view){
+    public void  downloadImage(View view){
         //显示跳转
         Intent intent = new Intent(this, DownLoadImageActivity.class);
 
