@@ -20,5 +20,10 @@
         android:layout_height="wrap_content"
         android:onClick="checkListView"
         android:text="基于checkListView"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="displayImage"
+        android:text="显示图片"/>
 
 </LinearLayout>

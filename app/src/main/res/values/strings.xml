@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyStudyDemo</string>
+    <string name="title_activity_down_load_image">DownLoadImageActivity</string>
 </resources>
