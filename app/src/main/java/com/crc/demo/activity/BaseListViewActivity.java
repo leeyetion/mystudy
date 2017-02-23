@@ -60,9 +60,7 @@ public class BaseListViewActivity extends AppCompatActivity {
             tv_address.setText(p.getAdress());
             TextView tv_phone=(TextView) view.findViewById(R.id.tv_phone);
             tv_phone.setText(p.getPhone());
-
             return view;
-
         }
     }
 

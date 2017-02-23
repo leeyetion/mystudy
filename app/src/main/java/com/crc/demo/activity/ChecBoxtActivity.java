@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ public class ChecBoxtActivity extends Activity {
 
 	private List<Person> pList = new ArrayList<Person>();
 	private TextView txt_count = null;
+	Handler myhandler=new Handler(){
+	};
 	private int count = 0;
 
     RadioButton rb_all=null;
@@ -32,6 +35,7 @@ public class ChecBoxtActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_checkbox);
+
 		// 1:从网络获取数据 json数组
 		for (int i = 1; i <= 20; i++) {
 			pList.add(new Person("小强" + i, false));
