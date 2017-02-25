@@ -36,6 +36,15 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void  viewUtilsvDemo(View view){
+        //显示跳转
+        Intent intent = new Intent(this, ViewUtilsActivity.class);
+
+        startActivity(intent);
+    }
+
+
+
 
 
 }

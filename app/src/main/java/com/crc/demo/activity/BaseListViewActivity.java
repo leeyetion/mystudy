@@ -23,7 +23,7 @@ public class BaseListViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_baselistview);
+        setContentView(R.layout.activity_base_list_view);
 
         ListView lv_person=(ListView)findViewById(R.id.lv_person);
         initdate();
@@ -50,7 +50,7 @@ public class BaseListViewActivity extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                view = View.inflate(BaseListViewActivity.this,R.layout.activity_baselistview_item,null);
+                view = View.inflate(BaseListViewActivity.this,R.layout.base_list_view_item,null);
 
             }
             Person p=(Person)getItem(i);

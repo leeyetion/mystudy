@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 
+/*线程池执行的任务*/
 public class SmartImageTask implements Runnable {
     private static final int BITMAP_READY = 0;
 
@@ -13,6 +14,7 @@ public class SmartImageTask implements Runnable {
     private SmartImage image;
     private Context context;
 
+    //用户处理下载完成图片赋值操作
     public static class OnCompleteHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
@@ -20,6 +22,7 @@ public class SmartImageTask implements Runnable {
             onComplete(bitmap);
         }
 
+        //子类重新该方法进行赋值
         public void onComplete(Bitmap bitmap){};
     }
 

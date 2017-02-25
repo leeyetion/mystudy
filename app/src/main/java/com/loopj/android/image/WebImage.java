@@ -20,6 +20,8 @@ public class WebImage implements SmartImage {
         this.url = url;
     }
 
+
+    //用户图片加载方法
     public Bitmap getBitmap(Context context) {
         // Don't leak context
         if(webImageCache == null) {
@@ -41,6 +43,7 @@ public class WebImage implements SmartImage {
         return bitmap;
     }
 
+    //通过url下载网络图片，只能在子线程里面执行
     private Bitmap getBitmapFromUrl(String url) {
         Bitmap bitmap = null;
 

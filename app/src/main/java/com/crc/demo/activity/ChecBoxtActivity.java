@@ -30,7 +30,7 @@ public class ChecBoxtActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_checkbox);
+		setContentView(R.layout.activity_checkbox_list_view);
 		txt_count = (TextView) findViewById(R.id.txt_count);
 		// 1:从网络获取数据 json数组
 		for (int i = 1; i <= 20; i++) {
@@ -45,15 +45,15 @@ public class ChecBoxtActivity extends Activity {
 	}
 
 	// 全选功能
-	public void btnAll(View view) {
-		for (Person temp : pList) {
+	public void btnAll(View view) {for (Person temp : pList) {
 			temp.setCheck(true);
 		}
 		count = pList.size();
 		// txt_count.setText("已选中"+count+"项");
 		txt_count.setText(String.format("已选中%d项", count));
 		// 数据源更新同步listview则需要使用观察者模式
-		mAdapter.notifyDataSetChanged();
+		MyBaseAdapter mAdapter = this.mAdapter;
+		       mAdapter.notifyDataSetChanged();
 	}
 
 	// 取消选择
@@ -107,7 +107,7 @@ public class ChecBoxtActivity extends Activity {
 			if (convertView == null) {
 				// Recycle中没有list_item，则创建
 				item = (View) View.inflate(ChecBoxtActivity.this,
-						R.layout.list_item2, null);
+						R.layout.checkbox_list_view_item, null);
 			} else {
 				// item可以使用以前的但是数据,要重新赋值
 				item = convertView;

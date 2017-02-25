@@ -15,14 +15,21 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 
+/*
+* 实现资源的一级二级缓存
+* */
+
 public class WebImageCache {
+    //存储路径
     private static final String DISK_CACHE_PATH = "/web_image_cache/";
 
+    //软应用（一级缓存）
     private ConcurrentHashMap<String, SoftReference<Bitmap>> memoryCache;
     private String diskCachePath;
     private boolean diskCacheEnabled = false;
     private ExecutorService writeThread;
 
+    //构造方法创建
     public WebImageCache(Context context) {
         // Set up in-memory cache store
         memoryCache = new ConcurrentHashMap<String, SoftReference<Bitmap>>();
@@ -31,6 +38,7 @@ public class WebImageCache {
         Context appContext = context.getApplicationContext();
         diskCachePath = appContext.getCacheDir().getAbsolutePath() + DISK_CACHE_PATH;
 
+        //需要添加sd卡读写权限
         File outFile = new File(diskCachePath);
         outFile.mkdirs();
 
@@ -40,6 +48,8 @@ public class WebImageCache {
         writeThread = Executors.newSingleThreadExecutor();
     }
 
+
+    //根据资源的url从缓存中获取Bitmap
     public Bitmap get(final String url) {
         Bitmap bitmap = null;
 
