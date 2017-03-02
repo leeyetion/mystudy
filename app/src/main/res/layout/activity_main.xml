@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
    >
 
     <TextView
@@ -30,5 +31,15 @@
         android:layout_height="wrap_content"
         android:onClick="viewUtilsvDemo"
         android:text="ViewUtils测试"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="serviceDemo"
+        android:text="Service测试"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="myMusicDemo"
+        android:text="我的音乐"/>
 
 </LinearLayout>

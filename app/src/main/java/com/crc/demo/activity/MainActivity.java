@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.crc.demo.service.MyService;
 import com.crcement.com.mystudydemo.R;
 
 public class MainActivity extends Activity {
@@ -43,6 +44,19 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void  serviceDemo(View view){
+        //显示跳转
+        Intent intent = new Intent(this, ServiceDemo.class);
+
+        startActivity(intent);
+    }
+
+    public void  myMusicDemo(View view){
+        //显示跳转
+        Intent intent = new Intent(this, MyMusicDemo.class);
+
+        startActivity(intent);
+    }
 
 
 

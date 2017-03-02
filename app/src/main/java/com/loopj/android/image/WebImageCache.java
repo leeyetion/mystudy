@@ -133,6 +133,7 @@ public class WebImageCache {
         });
     }
 
+    //缓存取得图片
     private Bitmap getBitmapFromMemory(String url) {
         Bitmap bitmap = null;
         SoftReference<Bitmap> softRef = memoryCache.get(getCacheKey(url));

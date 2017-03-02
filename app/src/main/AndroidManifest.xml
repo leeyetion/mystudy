@@ -4,13 +4,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name="com.crc.demo.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,15 +26,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name="com.crc.demo.activity.DownLoadImageActivity" />
+        <activity android:name="com.crc.demo.activity.ViewUtilsActivity" />
+        <activity android:name="com.crc.demo.activity.ListViewActivity" />
+
+        <service android:name="com.crc.demo.service.MyService" />
+        <service android:name="com.crc.demo.service.MyMusicService" />
+
         <activity
-            android:name="com.crc.demo.activity.DownLoadImageActivity"
-           />
-        <activity
-            android:name="com.crc.demo.activity.ViewUtilsActivity"
+            android:name="com.crc.demo.activity.ServiceDemo"
             />
-        <activity
-            android:name="com.crc.demo.activity.ListViewActivity"
-            />
+        <activity android:launchMode="singleInstance" android:name="com.crc.demo.activity.MyMusicDemo"/>
     </application>
 
 </manifest>

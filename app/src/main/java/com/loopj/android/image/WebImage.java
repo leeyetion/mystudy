@@ -31,11 +31,11 @@ public class WebImage implements SmartImage {
         // Try getting bitmap from cache first
         Bitmap bitmap = null;
         if(url != null) {
-            bitmap = webImageCache.get(url);
+            bitmap = webImageCache.get(url);//缓存中取得图片
             if(bitmap == null) {
-                bitmap = getBitmapFromUrl(url);
+                bitmap = getBitmapFromUrl(url);//下载图片
                 if(bitmap != null){
-                    webImageCache.put(url, bitmap);
+                    webImageCache.put(url, bitmap);//加入缓存
                 }
             }
         }
