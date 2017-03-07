@@ -43,9 +43,9 @@
         <service android:name="com.crc.demo.service.CallService"/>
 
         <activity
-            android:name="com.crc.demo.activity.ServiceDemo"
+            android:name="com.crc.demo.activity.ServiceDemoActivity"
             />
-        <activity android:launchMode="singleInstance" android:name="com.crc.demo.activity.MyMusicDemo"/>
+        <activity android:launchMode="singleInstance" android:name="com.crc.demo.activity.MyMusicDemoActivity"/>
     </application>
 
 </manifest>

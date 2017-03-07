@@ -53,7 +53,8 @@ public class ChecBoxtActivity extends Activity {
 		txt_count.setText(String.format("已选中%d项", count));
 		// 数据源更新同步listview则需要使用观察者模式
 		MyBaseAdapter mAdapter = this.mAdapter;
-		       mAdapter.notifyDataSetChanged();
+		//更新UI
+		mAdapter.notifyDataSetChanged();
 	}
 
 	// 取消选择

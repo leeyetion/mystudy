@@ -17,7 +17,7 @@ import java.util.List;
 public class BaseListViewActivity extends AppCompatActivity {
 
     List<Person> p_list =new ArrayList<Person>();
-    ListView lv_person=null;
+
 
 
     @Override
@@ -30,6 +30,7 @@ public class BaseListViewActivity extends AppCompatActivity {
         lv_person.setAdapter(new MyAdapter());
     }
 
+    //定义适配器
     class MyAdapter extends BaseAdapter{
 
         @Override
@@ -54,6 +55,7 @@ public class BaseListViewActivity extends AppCompatActivity {
 
             }
             Person p=(Person)getItem(i);
+            //设置Item的值
             TextView tv_name=(TextView) view.findViewById(R.id.tv_name);
             tv_name.setText(p.getName());
             TextView tv_address=(TextView) view.findViewById(R.id.tv_address);

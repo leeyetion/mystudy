@@ -14,7 +14,7 @@ import android.view.View;
 import com.crc.demo.service.MyService;
 import com.crcement.com.mystudydemo.R;
 
-public class ServiceDemo extends Activity {
+public class ServiceDemoActivity extends Activity {
 
     //service 的内部类，
     private MyService.MyServiceProxy serviceProxy = null;

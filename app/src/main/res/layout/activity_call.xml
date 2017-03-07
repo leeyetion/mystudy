@@ -10,6 +10,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+    <EditText
+        android:id="@+id/et_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入拦截的号码"/>
+    <Button
+        style="@style/basebtnStyle"
+        android:onClick="addNumber"
+        android:text="加入黑名单"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

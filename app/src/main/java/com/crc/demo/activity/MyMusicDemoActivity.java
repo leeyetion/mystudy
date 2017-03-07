@@ -3,26 +3,15 @@ package com.crc.demo.activity;
 import android.app.Activity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.crc.demo.service.MyMusicService;
-import com.crc.demo.until.OperateOFile;
 import com.crcement.com.mystudydemo.R;
 
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class MyMusicDemo extends Activity {
+public class MyMusicDemoActivity extends Activity {
 
 
 
@@ -44,7 +33,7 @@ public class MyMusicDemo extends Activity {
         playorpause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MyMusicDemo.this, MyMusicService.class);
+                Intent intent=new Intent(MyMusicDemoActivity.this, MyMusicService.class);
                 ImageView vv=(ImageView)v;
                 String flag=v.getTag().toString();
                 if(flag.equals("play")){
@@ -67,7 +56,7 @@ public class MyMusicDemo extends Activity {
         last.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MyMusicDemo.this, MyMusicService.class);
+                Intent intent=new Intent(MyMusicDemoActivity.this, MyMusicService.class);
                 intent.putExtra("command","last");
                 startService(intent);
             }
@@ -75,7 +64,7 @@ public class MyMusicDemo extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MyMusicDemo.this, MyMusicService.class);
+                Intent intent=new Intent(MyMusicDemoActivity.this, MyMusicService.class);
                 intent.putExtra("command","next");
                 startService(intent);
             }
@@ -86,7 +75,7 @@ public class MyMusicDemo extends Activity {
     @Override
     protected void onDestroy() {
         if (flag.equals("pause")){
-            stopService(new Intent(MyMusicDemo.this, MyMusicService.class));
+            stopService(new Intent(MyMusicDemoActivity.this, MyMusicService.class));
         }
         super.onDestroy();
     }

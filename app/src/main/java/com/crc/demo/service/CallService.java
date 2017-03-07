@@ -11,10 +11,13 @@ import android.util.Log;
 import com.android.internal.telephony.ITelephony;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CallService extends Service {
     TelephonyManager tm = null;
     PhoneStateListener phoneStateListener = new PhoneStateListener();
+    List<String> numberList=new ArrayList<String>();
 
     public CallService() {
     }
@@ -32,6 +35,8 @@ public class CallService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        numberList.add("11O");
+        numberList.add("18038054208");
 
         Log.i("jxy", "CallService....onCreate");
         tm = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
@@ -47,7 +52,10 @@ public class CallService extends Service {
                         break;
                     case TelephonyManager.CALL_STATE_RINGING://响铃
                         Log.i("jxy", "响铃....."+incomingNumber);
-                        if(incomingNumber.equals("18038054208"))
+                        for(int i=0;i<numberList.size();i++){
+                            Log.i("mytag","--------"+numberList.get(i));
+                        }
+                        if(numberList.contains(incomingNumber))
                             CallService.endCall();
                         break;
                     case TelephonyManager.CALL_STATE_OFFHOOK://正在通话
@@ -71,8 +79,14 @@ public class CallService extends Service {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        String et=intent.getStringExtra("et");
+        Log.i("mytag","onStartCommand"+et);
+        numberList.add(et);
+
+        return super.onStartCommand(intent, flags, startId);
+    }
 }
