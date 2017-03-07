@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.crcement.com.mystudydemo">
 
+    <!--允许上网权限-->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--允许程序写入外部存储,如SD卡上写文件-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.crc.demo.activity.BaseListViewActivity" />
+        <!--隐式跳转-->
         <activity android:name="com.crc.demo.activity.ChecBoxtActivity">
             <intent-filter>
                 <action android:name="canway.hr.action.CHECKBOX" />
@@ -29,9 +36,11 @@
         <activity android:name="com.crc.demo.activity.DownLoadImageActivity" />
         <activity android:name="com.crc.demo.activity.ViewUtilsActivity" />
         <activity android:name="com.crc.demo.activity.ListViewActivity" />
+        <activity android:name="com.crc.demo.activity.CallActivity"/>
 
         <service android:name="com.crc.demo.service.MyService" />
         <service android:name="com.crc.demo.service.MyMusicService" />
+        <service android:name="com.crc.demo.service.CallService"/>
 
         <activity
             android:name="com.crc.demo.activity.ServiceDemo"

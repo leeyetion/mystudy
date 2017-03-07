@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     }
 
     public void checkListView(View view){
-        // 显示跳转,唯一性
+        //
         Intent intent = new Intent("canway.hr.action.CHECKBOX");
         // 如果调用第三方的Activity则用隐式(多个字符串相同,则会出现选择框)
         startActivity(intent);
@@ -54,6 +54,13 @@ public class MainActivity extends Activity {
     public void  myMusicDemo(View view){
         //显示跳转
         Intent intent = new Intent(this, MyMusicDemo.class);
+
+        startActivity(intent);
+    }
+
+    public void  myPhoneDemo(View view){
+        //显示跳转
+        Intent intent = new Intent(this, CallActivity.class);
 
         startActivity(intent);
     }

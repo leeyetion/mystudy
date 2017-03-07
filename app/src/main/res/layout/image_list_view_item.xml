@@ -20,14 +20,12 @@
 
         <TextView
             android:id="@+id/txt_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/basebtnStyle"
             android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/txt_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/basebtnStyle"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true" />
     </RelativeLayout>

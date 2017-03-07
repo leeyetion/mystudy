@@ -12,34 +12,32 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/basebtnStyle"
         android:onClick="baseListView"
         android:text="基础ListView"/>
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/basebtnStyle"
         android:onClick="checkListView"
         android:text="基于checkListView"/>
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/basebtnStyle"
         android:onClick="downloadImage"
         android:text="下载图片"/>
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/basebtnStyle"
         android:onClick="viewUtilsvDemo"
         android:text="ViewUtils测试"/>
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/basebtnStyle"
         android:onClick="serviceDemo"
         android:text="Service测试"/>
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/basebtnStyle"
         android:onClick="myMusicDemo"
         android:text="我的音乐"/>
+    <Button
+        style="@style/basebtnStyle"
+        android:onClick="myPhoneDemo"
+        android:text="我的黑名单"/>
 
 </LinearLayout>
