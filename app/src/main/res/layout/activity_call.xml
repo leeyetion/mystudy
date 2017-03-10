@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:hint="请输入拦截的号码"/>
     <Button
+        android:id="@+id/bt_addnumber"
         style="@style/basebtnStyle"
         android:onClick="addNumber"
         android:text="加入黑名单"/>

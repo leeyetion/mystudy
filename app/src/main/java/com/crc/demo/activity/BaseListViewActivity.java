@@ -14,9 +14,13 @@ import com.crcement.com.mystudydemo.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class BaseListViewActivity extends AppCompatActivity {
 
     List<Person> p_list =new ArrayList<Person>();
+    @BindView(R.id.lv_person) ListView lv_person;
 
 
 
@@ -25,7 +29,7 @@ public class BaseListViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_list_view);
 
-        ListView lv_person=(ListView)findViewById(R.id.lv_person);
+        ButterKnife.bind(this);
         initdate();
         lv_person.setAdapter(new MyAdapter());
     }
@@ -50,19 +54,39 @@ public class BaseListViewActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
+
+            ViewHolder viewHolder;
+
             if (view == null) {
                 view = View.inflate(BaseListViewActivity.this,R.layout.base_list_view_item,null);
-
+                viewHolder = new ViewHolder(view);
+                view.setTag(viewHolder);
+            }else{
+                viewHolder = (ViewHolder) view.getTag();
             }
             Person p=(Person)getItem(i);
             //设置Item的值
-            TextView tv_name=(TextView) view.findViewById(R.id.tv_name);
-            tv_name.setText(p.getName());
-            TextView tv_address=(TextView) view.findViewById(R.id.tv_address);
-            tv_address.setText(p.getAdress());
-            TextView tv_phone=(TextView) view.findViewById(R.id.tv_phone);
-            tv_phone.setText(p.getPhone());
+
+            viewHolder.tv_name.setText(p.getName());
+
+            viewHolder.tv_address.setText(p.getAdress());
+
+            viewHolder.tv_phone.setText(p.getPhone());
+
             return view;
+        }
+    }
+
+    static class ViewHolder{
+        @BindView(R.id.tv_name) TextView tv_name;
+
+        @BindView(R.id.tv_address) TextView tv_address;
+
+        @BindView(R.id.tv_phone) TextView tv_phone;
+
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
         }
     }
 

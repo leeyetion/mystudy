@@ -11,16 +11,29 @@ import com.crc.demo.service.CallService;
 import com.crcement.com.mystudydemo.R;
 
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+
 public class CallActivity extends Activity {
 
-    EditText et_number=null;
+    //EditText et_number=null;
     String et=null;
+
+    @BindView(R.id.et_number)
+    EditText et_number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call);
-        et_number=(EditText) findViewById(R.id.et_number);
+        //et_number=(EditText) findViewById(R.id.et_number);
+
+        ButterKnife.bind(this);
+
+
+
     }
 
     public void startListener(View view){
@@ -31,12 +44,23 @@ public class CallActivity extends Activity {
         stopService(new Intent(this,CallService.class));
 
     }
-    public void addNumber(View view){
+
+    @OnClick(R.id.bt_addnumber) void submit() {
         et=et_number.getText().toString();
         Log.i("mytag","--------callActivity"+et);
         Intent intent=new Intent(this,CallService.class);
         intent.putExtra("et",et);
         startService(intent);
-
     }
+
+
+
+//    public void addNumber(View view){
+//        et=et_number.getText().toString();
+//        Log.i("mytag","--------callActivity"+et);
+//        Intent intent=new Intent(this,CallService.class);
+//        intent.putExtra("et",et);
+//        startService(intent);
+//
+//    }
 }

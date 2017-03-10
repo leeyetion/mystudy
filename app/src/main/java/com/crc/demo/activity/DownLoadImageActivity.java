@@ -18,7 +18,12 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DownLoadImageActivity extends Activity {
+    @BindView(R.id.iv) ImageView iv;
+    @BindView(R.id.siv) SmartImageView siv;
 
     // 主线程创建一个Handler对象,子线程通过主线程的Handler对象把Message交给主线程MessageQueue
     private Handler handler = new Handler() {
@@ -28,7 +33,7 @@ public class DownLoadImageActivity extends Activity {
             Log.i("jxy", "当前线程名称:" + Thread.currentThread().getName());
             Bitmap bitmap = (Bitmap) msg.obj;
             // 获取ImageView,然后赋值即可(此处是主线程)
-            ImageView iv = (ImageView) findViewById(R.id.iv);
+            //ImageView iv = (ImageView) findViewById(R.id.iv);
             iv.setImageBitmap(bitmap);
         }
 
@@ -39,6 +44,7 @@ public class DownLoadImageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_down_load_image);
+        ButterKnife.bind(this);
 
         // 此处是主线程
         Log.i("jxy", "mainLooper:" + Looper.getMainLooper() + ",myLooper:"
@@ -63,7 +69,7 @@ public class DownLoadImageActivity extends Activity {
     public void downImage03(View view) {
         // 默认支持 Https协议, 支持内存、硬盘级缓存(一级，二级缓存),下载的时候必须开启网络访问权限
         String imageUrl = "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png";
-        SmartImageView siv = (SmartImageView) findViewById(R.id.siv);
+        //SmartImageView siv = (SmartImageView) findViewById(R.id.siv);
         siv.setImageUrl(imageUrl);
     }
 
@@ -87,7 +93,7 @@ public class DownLoadImageActivity extends Activity {
                     if (code == 200) {
                         // 获取输入流下载图片信息
                         InputStream in = httpConn.getInputStream();
-                        ImageView iv = (ImageView) findViewById(R.id.iv);
+                        //ImageView iv = (ImageView) findViewById(R.id.iv);
                         // android提供了一个工具类来InputStream --> BitMap之间的转化
                         Bitmap bitMap = BitmapFactory.decodeStream(in);
                         Log.i("jxy", "bitMap:" + bitMap);
@@ -131,7 +137,7 @@ public class DownLoadImageActivity extends Activity {
             if (code == 200) {
                 // 获取输入流下载图片信息
                 InputStream in = httpConn.getInputStream();
-                ImageView iv = (ImageView) findViewById(R.id.iv);
+                //ImageView iv = (ImageView) findViewById(R.id.iv);
                 // android提供了一个工具类来InputStream --> BitMap之间的转化
                 Bitmap bitMap = BitmapFactory.decodeStream(in);
                 iv.setImageBitmap(bitMap);
