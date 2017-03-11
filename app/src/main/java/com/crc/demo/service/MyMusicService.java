@@ -5,18 +5,15 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
+
 import android.util.Log;
 
 import com.crc.demo.until.OperateOFile;
-import com.crcement.com.mystudydemo.R;
-
-import java.io.IOException;
 import java.util.List;
 
 public class MyMusicService extends Service {
 
-    MediaPlayer mediaPlayer = new MediaPlayer();
+    MediaPlayer mediaPlayer = null;
     List<String> fList = null;
     int number = 0;
 
@@ -30,6 +27,11 @@ public class MyMusicService extends Service {
         super.onCreate();
 
         fList = OperateOFile.getFileName(path);
+
+        if (mediaPlayer == null) {
+            mediaPlayer = new MediaPlayer();
+        }
+
         try {
             mediaPlayer.setDataSource(path + fList.get(number));
             mediaPlayer.prepare();//缓冲
@@ -37,10 +39,10 @@ public class MyMusicService extends Service {
             e.printStackTrace();
         }
 
+
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {//播出完毕事件
             @Override
             public void onCompletion(MediaPlayer arg0) {
-                mediaPlayer.release();
                 number++;
                 initplay();
             }
@@ -62,10 +64,58 @@ public class MyMusicService extends Service {
         super.onDestroy();
     }
 
-    @Nullable
+    public  class MyServiceProxy extends Binder {
+        // 以后都要通过代理来完成操作
+
+        public void playMusicProxy(String name) {
+            playMusic(name);
+        }
+
+        public int getDuration(){
+            if(mediaPlayer!=null){
+                return mediaPlayer.getDuration();
+            }else{
+                return 0;
+            }
+
+        }
+
+        public int getCurrentPosition(){
+            if(mediaPlayer!=null){
+                return mediaPlayer.getCurrentPosition();
+            }else{
+                return 0;
+            }
+        }
+
+        public  void seekTo(int nn){
+            if(mediaPlayer!=null)
+            mediaPlayer.seekTo(nn);
+        }
+        public boolean isPlaying(){
+            if(mediaPlayer!=null){
+                return mediaPlayer.isPlaying();
+            }
+            else {
+                return false;
+            }
+
+        }
+    }
+
+    private void playMusic(String name) {
+        Log.i("jxy", this.getClass().getName() + ":正在播放的歌曲是:" + name);
+    }
+
+
+
+
+
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        MyMusicService.MyServiceProxy myServiceProxy = new MyMusicService.MyServiceProxy();
+        Log.i("jxy", "onBind:myServiceProxy-->" + myServiceProxy);
+        return myServiceProxy;
     }
 
     @Override
@@ -87,12 +137,15 @@ public class MyMusicService extends Service {
     }
 
     private void play() {
+
+
         mediaPlayer.start();//开始或恢复播放
     }
 
     private void pause() {
-        mediaPlayer.pause();
-
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
     }
 
     private void last() {

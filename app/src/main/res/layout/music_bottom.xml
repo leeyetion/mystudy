@@ -6,7 +6,7 @@
     android:layout_height="30dp"
     >
     <ImageView
-        android:id="@+id/playorpause"
+        android:id="@+id/play"
         android:tag="play"
         android:layout_width="wrap_content"
         android:src="@drawable/play_open"
@@ -15,9 +15,17 @@
         android:layout_alignParentTop="true" />
 
     <ImageView
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_toLeftOf="@id/play"
+        android:src="@drawable/stop_open"
+        android:scaleType="fitCenter"
+        android:layout_height="wrap_content" />
+
+    <ImageView
         android:id="@+id/last"
         android:layout_width="wrap_content"
-        android:layout_toLeftOf="@id/playorpause"
+        android:layout_toLeftOf="@id/pause"
         android:src="@drawable/arrow_left_open"
         android:scaleType="fitCenter"
         android:layout_height="wrap_content" />
@@ -25,7 +33,7 @@
     <ImageView
         android:id="@+id/next"
         android:layout_width="wrap_content"
-        android:layout_toRightOf="@id/playorpause"
+        android:layout_toRightOf="@id/play"
         android:src="@drawable/arrow_right_open"
         android:layout_height="wrap_content" />
 

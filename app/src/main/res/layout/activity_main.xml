@@ -39,5 +39,9 @@
         style="@style/basebtnStyle"
         android:onClick="myPhoneDemo"
         android:text="我的黑名单"/>
+    <Button
+        style="@style/basebtnStyle"
+        android:onClick="myroadcast"
+        android:text=""/>
 
 </LinearLayout>
